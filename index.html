@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Be My Valentine 💖</title>
+
   <style>
     body {
       background-color: #ffb6c1;
@@ -10,39 +12,51 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
+      font-family: "Comic Sans MS", cursive;
+      overflow: hidden;
     }
 
-    .box {
+    .container {
       text-align: center;
       position: relative;
     }
 
     img {
-      width: 180px;
+      width: 200px;
       margin-bottom: 20px;
     }
 
     h1 {
       color: #b30059;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 80px;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px 26px;
       font-size: 18px;
-      margin: 10px;
-      cursor: pointer;
+      border-radius: 10px;
       border: none;
-      border-radius: 8px;
+      cursor: pointer;
+
+      /* REMOVE WHITE HIGHLIGHT */
+      outline: none;
+      box-shadow: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     #yes {
       background-color: #ff4d88;
       color: white;
+      margin-right: 20px;
     }
 
     #no {
-      background-color: #999;
+      background-color: #777;
       color: white;
       position: absolute;
     }
@@ -50,9 +64,39 @@
 </head>
 
 <body>
-  <div class="box">
+
+  <div class="container">
+    <!-- IMAGE (you can change link) -->
     <img src="https://i.imgur.com/JY5Yk5k.png" alt="Cute Cat">
+
     <h1>Will you be my Valentine? 💘</h1>
 
-    <button id="yes" onclick="alert('Yay! 💖🥰')">Yes</button>
-    <button id="no">No</bu
+    <div class="buttons">
+      <button id="yes" onclick="alert('Yay! 💖🥰')">Yes</button>
+      <button id="no">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+
+    function moveNoButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    // Move on hover
+    noBtn.addEventListener("mouseover", moveNoButton);
+
+    // Move on click attempt
+    noBtn.addEventListener("click", moveNoButton);
+
+    // Move on mobile touch
+    noBtn.addEventListener("touchstart", moveNoButton);
+  </script>
+
+</body>
+</html>
